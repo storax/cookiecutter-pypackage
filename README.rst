@@ -4,6 +4,11 @@ cookiecutter-pypackage
 
 Cookiecutter template for a Python package. See https://github.com/audreyr/cookiecutter.
 
+I adapted the pypackage from nekroze a little bit for my needs.
+The doc has the sphinx theme already installed. There 2 scripts that help
+building the apidoc (generates rst files for your packages). The official apidoc
+had a buggy formatting.
+
 * Free software: BSD license
 * Pytest_ runner: Supports `unittest`, `pytest`, `nose` style tests and more
 * Travis-CI_: Ready for Travis Continuous integration testing
@@ -34,7 +39,6 @@ Don't worry, you have options:
 Similar Cookiecutter Templates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* 
 * `nekroze/cookiecutter-pypackage`_: The original pypackage, uses unittest
 for testing and other minor changes.
 
