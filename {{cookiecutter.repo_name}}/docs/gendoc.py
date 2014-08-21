@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
     this is a modification of sphinx.apidoc by David.Zuber
