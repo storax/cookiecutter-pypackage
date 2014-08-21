@@ -1,6 +1,6 @@
-=============================
+=========================================================
 {{ cookiecutter.project_name }}
-=============================
+=========================================================
 
 .. image:: https://badge.fury.io/py/{{ cookiecutter.repo_name }}.png
     :target: http://badge.fury.io/py/{{ cookiecutter.repo_name }}
@@ -13,6 +13,11 @@
 
 
 {{ cookiecutter.project_short_description}}
+
+Documentation
+-------------
+
+The full documentation is at http://{{ cookiecutter.repo_name }}.rtfd.org.
 
 
 Features
