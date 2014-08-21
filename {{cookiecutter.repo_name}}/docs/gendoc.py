@@ -11,7 +11,7 @@
     ReST files appropriately to create code documentation with Sphinx.
 
     This is derived from the "sphinx-autopackage" script, which is:
-    Copyright 2008 Société des arts technologiques (SAT),
+    Copyright 2008 Societe des arts technologiques (SAT),
     http://www.sat.qc.ca/
 
     :copyright: Copyright 2007-2014 by the Sphinx team, see AUTHORS.
