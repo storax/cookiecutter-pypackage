@@ -14,7 +14,7 @@
 
 {{ cookiecutter.project_short_description}}
 
-* Free software: {{ cookiecutter.license }} license
+* Free software: MIT license
 
 
 Documentation
