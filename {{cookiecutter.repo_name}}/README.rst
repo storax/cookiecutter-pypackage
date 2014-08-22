@@ -14,6 +14,9 @@
 
 {{ cookiecutter.project_short_description}}
 
+* Free software: {{ cookiecutter.license }} license
+
+
 Documentation
 -------------
 
