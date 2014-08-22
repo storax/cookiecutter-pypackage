@@ -276,5 +276,4 @@ intersphinx_mapping = {'python': ('http://docs.python.org/2.7', None),
 if sys.argv[0].endswith('sphinx-build-script.py') or sys.argv[0].endswith('sphinx-build'):
     sys.path.append(os.path.dirname(__file__))
     import updatedoc
-    args = ['--no-build']
-    updatedoc.main(args)
+    updatedoc.main([])
