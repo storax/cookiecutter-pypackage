@@ -10,7 +10,6 @@ Usage, just call::
 import argparse
 import os
 import shutil
-import subprocess
 import sys
 
 import gendoc
@@ -53,13 +52,6 @@ def setup_argparse():
                         help='Do not empty the output directories first.')
     parser.add_argument('-gh', '--gendochelp', action='store_true',
                         help='print the help for gendoc and exit')
-    mfdefault = 'sphinx-build'
-    parser.add_argument('-mf', '--makefile', default=mfdefault,
-                        help='the makefile to use. Default is %s' % mfdefault)
-    madefault = ['-b', 'html', './', '_build/']
-    parser.add_argument('-ma', '--makeargs', nargs='+', default=madefault,
-                        help='arguments for the makefile.\
-                        Default is \'%s\'.' % ', '.join(madefault))
     return parser
 
 
@@ -105,34 +97,17 @@ def run_gendoc(source, dest, args):
     gendoc.main(args)
 
 
-def run_make(makefile, args):
-    """Run the sphinx make process
-
-    :param makefile: the sphinx make file to run. e.g. make.bat
-    :type makefile: str
-    :param args: the arguments for the makefile
-    :type args: list
-    :returns: return code of the makeprocess
-    :rtype: int
-    :raises: None
-    """
-    args.insert(0, makefile)
-    print 'Running sphinx make with: %s' % args
-    rcode = subprocess.call(args, cwd=os.getcwd())
-    return rcode
-
-
-def main(argv=sys.argv):
+def main(argv=sys.argv[1:]):
     """Parse commandline arguments and run the tool
 
-    :param argv: the commandline arguments
+    :param argv: the commandline arguments.
     :type argv: list
     :returns: None
     :rtype: None
     :raises: None
     """
     parser = setup_argparse()
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     if args.gendochelp:
         sys.argv[0] = 'gendoc.py'
         genparser = gendoc.setup_parser()
@@ -150,9 +125,6 @@ def main(argv=sys.argv):
         else:
             odir = args.output[i]
         run_gendoc(idir, odir, args.gendocargs)
-    print '\nRunning sphinx'
-    print '='*80
-    run_make(args.makefile, args.makeargs)
 
 if __name__ == '__main__':
     main()
