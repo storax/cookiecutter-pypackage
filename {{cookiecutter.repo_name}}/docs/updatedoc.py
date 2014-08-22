@@ -23,7 +23,7 @@ def setup_argparse():
     :rtype: :class:`argparse.ArgumentParser`
     :raises: None
     """
-    thisdir = os.path.dirname(__file__)
+    thisdir = os.path.abspath(os.path.dirname(__file__))
     parser = argparse.ArgumentParser(
         description="Builds the documentaion. First it runs gendoc to create rst files\
         for the source code. Then it runs sphinx make.\
@@ -53,19 +53,17 @@ def setup_argparse():
                         help='Do not empty the output directories first.')
     parser.add_argument('-gh', '--gendochelp', action='store_true',
                         help='print the help for gendoc and exit')
-    mfpath = os.path.join(thisdir, 'make.bat')
-    mfpath = os.path.normpath(mfpath)
-    mfdefault = mfpath
+    mfdefault = 'sphinx-build'
     parser.add_argument('-mf', '--makefile', default=mfdefault,
                         help='the makefile to use. Default is %s' % mfdefault)
-    madefault = ['html']
+    madefault = ['-b', 'html', './', '_build/']
     parser.add_argument('-ma', '--makeargs', nargs='+', default=madefault,
                         help='arguments for the makefile.\
                         Default is \'%s\'.' % ', '.join(madefault))
     return parser
 
 
-def prepare_dir(directory, delete=False):
+def prepare_dir(directory, delete=True):
     """Create apidoc dir, delete contents if delete is True.
 
     :param directory: the apidoc directory. you can use relative paths here
@@ -78,12 +76,13 @@ def prepare_dir(directory, delete=False):
     """
     if os.path.exists(directory):
         if delete:
-            print 'Deleting %s.' % directory
+            print 'Deleting %s' % directory
             shutil.rmtree(directory)
+            print 'Creating %s' % directory
             os.mkdir(directory)
     else:
+        print 'Creating %s' % directory
         os.mkdir(directory)
-    print '%s created.' % directory
 
 
 def run_gendoc(source, dest, args):
@@ -99,8 +98,10 @@ def run_gendoc(source, dest, args):
     :rtype: None
     :raises: SystemExit
     """
+    args.insert(0, 'gendoc.py')
     args.append(dest)
     args.append(source)
+    print 'Running gendoc.main with: %s' % args
     gendoc.main(args)
 
 
@@ -116,6 +117,7 @@ def run_make(makefile, args):
     :raises: None
     """
     args.insert(0, makefile)
+    print 'Running sphinx make with: %s' % args
     rcode = subprocess.call(args, cwd=os.getcwd())
     return rcode
 
@@ -139,7 +141,7 @@ def main(argv=sys.argv):
     print 'Preparing output directories'
     print '='*80
     for odir in args.output:
-        prepare_dir(odir, args.nodelete)
+        prepare_dir(odir, not args.nodelete)
     print '\nRunning gendoc'
     print '='*80
     for i, idir in enumerate(args.input):
