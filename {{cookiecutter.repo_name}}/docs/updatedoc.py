@@ -30,14 +30,14 @@ def setup_argparse():
         for the source code. Then it runs sphinx make.\
         WARNING: this will delete the contents of the output dirs. You can use -nod.")
     ipath = os.path.join(thisdir, '../{{ cookiecutter.repo_name  }}')
-    ipath = os.path.normpath(ipath)
+    ipath = os.path.abspath(ipath)
     idefault = [ipath]
     parser.add_argument('-i', '--input', nargs='+', default=idefault,
                         help='list of input directories. gendoc is called for every\
                         source dir.\
                         Default is \'%s\'.' % ', '.join(idefault))
     opath = os.path.join(thisdir, '{{ cookiecutter.apidocdir }}')
-    opath = os.path.normpath(opath)
+    opath = os.path.abspath(opath)
     odefault = [opath]
     parser.add_argument('-o', '--output', nargs='+', default=odefault,
                         help='list of output directories. if you have multiple source\

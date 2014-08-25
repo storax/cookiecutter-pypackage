@@ -1,5 +1,7 @@
-include AUTHORS.rst
-include CONTRIBUTING.rst
-include HISTORY.rst
+graft src
+
 include LICENSE
-include README.rst
+include *.txt
+include *.rst
+
+global-exclude *.py[co] __pycache__
