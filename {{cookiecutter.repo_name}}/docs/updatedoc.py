@@ -29,7 +29,7 @@ def setup_argparse():
         description="Builds the documentaion. First it runs gendoc to create rst files\
         for the source code. Then it runs sphinx make.\
         WARNING: this will delete the contents of the output dirs. You can use -nod.")
-    ipath = os.path.join(thisdir, '../{{ cookiecutter.repo_name  }}')
+    ipath = os.path.join(thisdir, '../src')
     ipath = os.path.abspath(ipath)
     idefault = [ipath]
     parser.add_argument('-i', '--input', nargs='+', default=idefault,
