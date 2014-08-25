@@ -5,7 +5,6 @@ from setuptools import setup
 from setuptools import find_packages
 from setuptools.command.test import test as TestCommand
 import io
-import re
 import os
 import sys
 
@@ -23,15 +22,6 @@ def read(*filenames, **kwargs):
     return sep.join(buf)
 
 
-def find_version(*file_paths):
-    version_file = read(*file_paths)
-    version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
-                              version_file, re.M)
-    if version_match:
-        return version_match.group(1)
-    raise RuntimeError("Unable to find version string.")
-
-
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
@@ -44,17 +34,14 @@ class PyTest(TestCommand):
         sys.exit(errcode)
 
 
-if sys.argv[-1] == 'publish':
-    os.system('python setup.py sdist upload')
-    sys.exit()
-
-
 long_description = read('README.rst', 'HISTORY.rst')
+install_requires = []
+test_requires = ['pytest']
 
 
 setup(
     name='{{ cookiecutter.repo_name }}',
-    version=find_version("{{ cookiecutter.repo_name }}", "__init__.py"),
+    version='{{ coockiecutter.version }}',
     description='{{ cookiecutter.project_short_description }}',
     long_description=long_description,
     author='{{ cookiecutter.full_name }}',
@@ -63,8 +50,8 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     tests_require=['pytest'],
-    install_requires=[
-    ],
+    install_requires=install_requires,
+    test_requires=test_requires,
     cmdclass={'test': PyTest},
     license='MIT',
     zip_safe=False,
@@ -77,7 +64,4 @@ setup(
         'Natural Language :: English',
         'Programming Language :: Python :: 2.7',
     ],
-    extras_require={
-        'testing': ['pytest'],
-    }
 )
