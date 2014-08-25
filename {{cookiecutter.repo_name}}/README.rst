@@ -12,14 +12,15 @@
     :target: https://pypi.python.org/pypi/{{ cookiecutter.repo_name }}
 
 .. image:: https://coveralls.io/repos/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/badge.png
-  :target: https://coveralls.io/r/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
+    :target: https://coveralls.io/r/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
+
+.. image:: http://img.shields.io/pypi/l/{{ cookiecutter.repo_name }}.svg
+    :target: https://pypi.python.org/pypi/{{ cookiecutter.repo_name }}
 
 
 
 
 {{ cookiecutter.project_short_description}}
-
-* Free software: MIT license
 
 
 Documentation
