@@ -14,6 +14,8 @@ import sys
 
 import gendoc
 
+thisdir = os.path.abspath(os.path.dirname(__file__))
+
 
 def setup_argparse():
     """Sets up the argument parser and returns it
@@ -22,7 +24,7 @@ def setup_argparse():
     :rtype: :class:`argparse.ArgumentParser`
     :raises: None
     """
-    thisdir = os.path.abspath(os.path.dirname(__file__))
+
     parser = argparse.ArgumentParser(
         description="Builds the documentaion. First it runs gendoc to create rst files\
         for the source code. Then it runs sphinx make.\
@@ -34,7 +36,7 @@ def setup_argparse():
                         help='list of input directories. gendoc is called for every\
                         source dir.\
                         Default is \'%s\'.' % ', '.join(idefault))
-    opath = os.path.join(thisdir, '{{ cookiecutter.apidoc }}')
+    opath = os.path.join(thisdir, '{{ cookiecutter.apidocdir }}')
     opath = os.path.normpath(opath)
     odefault = [opath]
     parser.add_argument('-o', '--output', nargs='+', default=odefault,
@@ -68,6 +70,7 @@ def prepare_dir(directory, delete=True):
     """
     if os.path.exists(directory):
         if delete:
+            assert directory != thisdir, 'Trying to delete docs! Specify other output dir!'
             print 'Deleting %s' % directory
             shutil.rmtree(directory)
             print 'Creating %s' % directory
