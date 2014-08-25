@@ -11,6 +11,11 @@
 .. image:: http://img.shields.io/pypi/dm/{{ cookiecutter.repo_name }}.png
     :target: https://pypi.python.org/pypi/{{ cookiecutter.repo_name }}
 
+.. image:: https://coveralls.io/repos/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}/badge.png
+  :target: https://coveralls.io/r/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
+
+
+
 
 {{ cookiecutter.project_short_description}}
 
