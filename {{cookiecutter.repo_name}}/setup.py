@@ -41,7 +41,7 @@ test_requires = ['pytest']
 
 setup(
     name='{{ cookiecutter.repo_name }}',
-    version='{{ coockiecutter.version }}',
+    version='{{ cookiecutter.version }}',
     description='{{ cookiecutter.project_short_description }}',
     long_description=long_description,
     author='{{ cookiecutter.full_name }}',
