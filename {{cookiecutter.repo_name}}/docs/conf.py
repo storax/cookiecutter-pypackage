@@ -274,7 +274,7 @@ intersphinx_mapping = {'python': ('http://docs.python.org/2.7', None),
 
 
 # if sphinx-build is running, do updatedoc to have a fresh apidoc
-if sys.argv[0].endswith('sphinx-build-script.py') or sys.argv[0].endswith('sphinx-build'):
+if 'sphinx-build' in sys.argv[0].lower():
     sys.path.append(os.path.dirname(__file__))
     import updatedoc
     updatedoc.main([])

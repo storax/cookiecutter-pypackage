@@ -36,7 +36,7 @@ class PyTest(TestCommand):
 
 long_description = read('README.rst', 'HISTORY.rst')
 install_requires = []
-test_requires = ['pytest']
+tests_require = ['pytest']
 
 
 setup(
@@ -49,9 +49,8 @@ setup(
     url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}',
     packages=find_packages(),
     include_package_data=True,
-    tests_require=['pytest'],
+    tests_require=tests_require,
     install_requires=install_requires,
-    test_requires=test_requires,
     cmdclass={'test': PyTest},
     license='MIT',
     zip_safe=False,
