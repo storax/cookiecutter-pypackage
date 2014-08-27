@@ -18,7 +18,7 @@ Contents:
    usage
    userdoc/index
    devdoc/index
-   api
+   reference
    contributing
    authors
    history

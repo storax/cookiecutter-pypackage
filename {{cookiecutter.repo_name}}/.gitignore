@@ -52,7 +52,7 @@ settings_local.py
 
 # Sphinx documentation
 docs/_build/
-docs/{{ cookiecutter.apidocdir }}
+docs/{{ cookiecutter.referencedir }}
 
 # Flymake
 *_flymake.py

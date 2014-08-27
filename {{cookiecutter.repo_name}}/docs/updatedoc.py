@@ -36,7 +36,7 @@ def setup_argparse():
                         help='list of input directories. gendoc is called for every\
                         source dir.\
                         Default is \'%s\'.' % ', '.join(idefault))
-    opath = os.path.join(thisdir, '{{ cookiecutter.apidocdir }}')
+    opath = os.path.join(thisdir, '{{ cookiecutter.referencedir }}')
     opath = os.path.abspath(opath)
     odefault = [opath]
     parser.add_argument('-o', '--output', nargs='+', default=odefault,
