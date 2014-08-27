@@ -5,9 +5,11 @@ cookiecutter-pypackage
 Cookiecutter template for a Python package. See https://github.com/audreyr/cookiecutter.
 
 I adapted the pypackage from nekroze a little bit for my needs.
-The doc has the sphinx theme already installed. There 2 scripts that help
+The doc has the sphinx theme already installed. There are 2 scripts that help
 building the apidoc (generates rst files for your packages). The official apidoc
-had a buggy formatting.
+had a buggy formatting. Have a look at ``docs/updatedoc.py``. It is setup so that if the sphinx build is invoked,
+the apidoc is generated before the actual build. This ensures that the apidoc is also built on readthedocs.
+Check out the bottom of ``docs/conf.py`` if you want to alter that behavior.
 
 * Free software: BSD license
 * Pytest_ runner: Supports `unittest`, `pytest`, `nose` style tests and more
@@ -27,6 +29,7 @@ Then:
 * Create a repo and put it there.
 * Add the repo to your Travis CI account.
 * Add the repo to your ReadTheDocs account + turn on the ReadTheDocs service hook.
+* Add the repo to coveralls
 * Run `tox` to make sure all tests pass.
 * Release your package the standard Python way.
 
@@ -38,8 +41,7 @@ Don't worry, you have options:
 Similar Cookiecutter Templates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* `nekroze/cookiecutter-pypackage`_: The original pypackage, uses unittest
-for testing and other minor changes.
+* `nekroze/cookiecutter-pypackage`_: The original pypackage i forked.
 
 Fork This
 ~~~~~~~~~
