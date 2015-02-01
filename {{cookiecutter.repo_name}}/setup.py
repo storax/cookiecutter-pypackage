@@ -37,7 +37,7 @@ class Tox(TestCommand):
 
 long_description = read('README.rst', 'HISTORY.rst')
 install_requires = []
-tests_require = ['pytest']
+tests_require = ['tox']
 
 
 setup(
@@ -53,7 +53,7 @@ setup(
     include_package_data=True,
     tests_require=tests_require,
     install_requires=install_requires,
-    cmdclass={'test': PyTest},
+    cmdclass={'test': Tox},
     license='BSD',
     zip_safe=False,
     keywords='{{ cookiecutter.repo_name }}',
