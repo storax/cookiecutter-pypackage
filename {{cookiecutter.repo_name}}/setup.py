@@ -22,21 +22,22 @@ def read(*filenames, **kwargs):
     return sep.join(buf)
 
 
-class PyTest(TestCommand):
+class Tox(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
         self.test_args = []
         self.test_suite = True
 
     def run_tests(self):
-        import pytest
-        errcode = pytest.main(self.test_args)
+        #import here, cause outside the eggs aren't loaded
+        import tox
+        errcode = tox.cmdline(self.test_args)
         sys.exit(errcode)
 
 
 long_description = read('README.rst', 'HISTORY.rst')
 install_requires = []
-tests_require = ['pytest']
+tests_require = ['tox']
 
 
 setup(
@@ -52,7 +53,7 @@ setup(
     include_package_data=True,
     tests_require=tests_require,
     install_requires=install_requires,
-    cmdclass={'test': PyTest},
+    cmdclass={'test': Tox},
     license='BSD',
     zip_safe=False,
     keywords='{{ cookiecutter.repo_name }}',
