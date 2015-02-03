@@ -5,11 +5,8 @@ cookiecutter-pypackage
 Cookiecutter template for a Python package. See https://github.com/audreyr/cookiecutter.
 
 I adapted the pypackage from nekroze a little bit for my needs.
-The doc has the sphinx theme already installed. There are 2 scripts that help
-building the apidoc (generates rst files for your packages). The official apidoc
-had a buggy formatting. Have a look at ``docs/updatedoc.py``. It is setup so that if the sphinx build is invoked,
-the apidoc is generated before the actual build. This ensures that the apidoc is also built on readthedocs.
-Check out the bottom of ``docs/conf.py`` if you want to alter that behavior.
+The doc has the sphinx theme already installed.
+It uses the https://github.com/storax/jinjaapidoc package to create the api documenation.
 
 * Free software: BSD license
 * Pytest_ runner: Supports `unittest`, `pytest`, `nose` style tests and more
