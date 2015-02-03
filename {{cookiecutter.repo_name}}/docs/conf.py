@@ -274,9 +274,10 @@ autodoc_default_flags = ['members', 'undoc-members', 'show-inheritance']
 intersphinx_mapping = {'python': ('http://docs.python.org/2.7', None),
                        'pyside': ('https://deptinfo-ensip.univ-poitiers.fr/ENS/pyside-docs/', None)}
 
+autosummary_generate = True
 
-# if sphinx-build is running, do updatedoc to have a fresh apidoc
-if 'sphinx-build' in sys.argv[0].lower():
-    sys.path.append(os.path.dirname(__file__))
-    import updatedoc
-    updatedoc.main([])
+# -- Jinjaapidoc Config ---------------------------------------------------
+
+jinjaapi_srcdir = os.path.abspath(os.path.join(thisdir, '..', 'src'))
+jinjaapi_outputdir = os.path.abspath(os.path.join(thisdir, 'reference'))
+jinjaapi_nodelete = False
