@@ -5,7 +5,6 @@ cookiecutter-pypackage
 Cookiecutter template for a Python package. See https://github.com/audreyr/cookiecutter.
 
 I adapted the pypackage from nekroze a little bit for my needs.
-The doc has the sphinx theme already installed.
 It uses the https://github.com/storax/jinjaapidoc package to create the api documenation.
 
 * Free software: BSD license
@@ -24,6 +23,7 @@ Generate a Python package project::
 Then:
 
 * Create a repo and put it there.
+* Add your encrypted password for deploy on PyPI to the conf/.travis.yml
 * Add the repo to your Travis CI account.
 * Add the repo to your ReadTheDocs account + turn on the ReadTheDocs service hook.
 * Add the repo to coveralls

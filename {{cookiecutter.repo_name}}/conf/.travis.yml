@@ -25,3 +25,11 @@ notifications:
     on_success: never
     on_failure: never
 {% endraw %}
+
+deploy:
+  provider: pypi
+  user: {{cookiecutter.github_username}}
+  distributions: "sdist bdist_wheel"
+  on:
+    tags: true
+    repo: {{cookiecutter.github_username}}/{{cookiecutter.repo_name}}
