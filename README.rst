@@ -5,7 +5,7 @@ cookiecutter-pypackage
 Cookiecutter template for a Python package. See https://github.com/audreyr/cookiecutter.
 
 I adapted the pypackage from nekroze a little bit for my needs.
-It uses the https://github.com/storax/jinjaapidoc package to create the api documenation.
+It uses the https://github.com/storax/jinjaapidoc package to create the api documenation automtically.
 
 * Free software: BSD license
 * Pytest_ runner: Supports `unittest`, `pytest`, `nose` style tests and more
@@ -18,15 +18,20 @@ Usage
 
 Generate a Python package project::
 
-    cookiecutter https://github.com/storax/cookiecutter-pypackage.git
+    $ cookiecutter https://github.com/storax/cookiecutter-pypackage.git
 
 Then:
 
 * Create a repo and put it there.
-* Add your encrypted password for deploy on PyPI to the conf/.travis.yml
+* Add your encrypted password for deploy on PyPI to the conf/.travis.yml.
+  You need the Travis-CLI_::
+
+    $ travis encrypt --add deploy.password
+
 * Add the repo to your Travis CI account.
 * Add the repo to your ReadTheDocs account + turn on the ReadTheDocs service hook.
 * Add the repo to coveralls
+* Run ``tox -e configure`` to create toxenvs based on settings in ``setup.cfg``.
 * Run `tox` to make sure all tests pass.
 * Release your package the standard Python way.
 
@@ -64,3 +69,4 @@ make my own packaging experience better.
 .. _Pytest: http://pytest.org/
 .. _PyPy: http://pypy.org/
 .. _Wheel: http://pythonwheels.com
+.. _Travis-CLI: https://github.com/travis-ci/travis.rb
