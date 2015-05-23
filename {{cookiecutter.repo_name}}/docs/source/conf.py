@@ -27,7 +27,7 @@ if os.getenv('SPELLCHECK'):
 
 templates_path = ['_templates']
 source_suffix = '.rst'
-master_doc = 'source/index'
+master_doc = 'index'
 
 # General information about the project.
 project = u'{{ cookiecutter.project_name }}'
@@ -84,6 +84,6 @@ autosummary_generate = True
 
 # -- Jinjaapidoc Config ---------------------------------------------------
 
-jinjaapi_srcdir = os.path.abspath(os.path.join(thisdir, '..', 'src'))
-jinjaapi_outputdir = os.path.abspath(os.path.join(thisdir, 'source', 'reference'))
+jinjaapi_srcdir = os.path.abspath(os.path.join(thisdir, '..', '..', 'src'))
+jinjaapi_outputdir = os.path.abspath(os.path.join(thisdir, 'source', '{{cookiecutter.referencedir}}'))
 jinjaapi_nodelete = False
